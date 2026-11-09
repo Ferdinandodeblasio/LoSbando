@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lo Sbando - Centro Situazionale | Torino, San Donato</title>
+<meta name="description" content="Lo Sbando è un Centro Situazionale nel quartiere San Donato, a Torino: un luogo in cui incontrarsi e far accadere cose. Calendario eventi, progetti, contatti.">
+<link rel="canonical" href="https://losbando.it/">
+<meta name="theme-color" content="#1d5fb6">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://losbando.it/">
+<meta property="og:title" content="Lo Sbando - Centro Situazionale">
+<meta property="og:description" content="Un luogo in cui incontrarsi e far accadere cose. Piazza Paravia 9/B, Torino.">
+<meta property="og:image" content="https://losbando.it/img/og-image.jpg">
+<meta property="og:locale" content="it_IT">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/bree-serif-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/league-spartan-latin-800.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  /* Font locali, licenza SIL OFL 1.1 (vedi fonts/OFL-*.txt) */
+  @font-face {
+    font-family: "League Spartan";
+    src: url("fonts/league-spartan-latin-800.woff2") format("woff2");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Bree Serif";
+    src: url("fonts/bree-serif-latin-400.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Token dal manuale di Lo Sbando.
+     Crema su blu 5,3:1; crema attenuato su blu 4,7:1; blu su crema 5,2:1.
+     Il rosso vive solo nel logo. */
+  :root {
+    --blu: #1d5fb6;
+    --crema: #f5ebd2;
+    --crema-2: #e8dec5;
+    --filetto: rgba(245, 235, 210, .45);
+    --display: "League Spartan", Futura, "Century Gothic", sans-serif;
+    --slab: "Bree Serif", Georgia, serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    background: var(--blu);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    padding: 2.5rem 1rem 4rem;
+    background: var(--blu);
+    color: var(--crema);
+    font-family: var(--slab);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Grana di carta: rumore SVG inline, fisso sopra la pagina, non intercetta i clic */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    opacity: .16;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.4 -.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  }
+
+  main {
+    max-width: 36rem;
+    margin: 0 auto;
+  }
+
+  p { margin: 0 0 1rem; text-wrap: pretty; }
+
+  /* Link: sempre sottolineati, sottolineatura più spessa al passaggio */
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: .2em;
+    overflow-wrap: anywhere;
+  }
+  a:hover { text-decoration-thickness: 3px; }
+  a:focus-visible,
+  summary:focus-visible {
+    outline: 3px solid var(--crema);
+    outline-offset: 4px;
+  }
+
+  .vh {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* Testata: il lockup originale, centrato, con il suo spazio di rispetto */
+  .testata {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  .testata h1 { margin: 0; }
+  .testata img {
+    display: block;
+    width: min(100%, 26rem);
+    min-width: 200px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .manifesto {
+    font-size: 1.35rem;
+    line-height: 1.45;
+    text-align: center;
+    margin: 0 auto 1rem;
+    max-width: 30rem;
+  }
+
+  section { margin-top: 3.5rem; }
+
+  /* Titoli di sezione: League Spartan, su filetto crema di 2px */
+  h2 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 2.25rem;
+    line-height: 1;
+    letter-spacing: .005em;
+    text-transform: uppercase;
+    margin: 0 0 1.25rem;
+    padding-top: .8rem;
+    border-top: 2px solid var(--crema);
+    text-wrap: balance;
+  }
+
+  /* Titoli di evento e progetto: Bree Serif maiuscolo, spaziato */
+  h3, .titolo {
+    font-family: var(--slab);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    margin: 0;
+  }
+
+  .etichetta {
+    font-size: .8125rem;
+    line-height: 1.25;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+  }
+
+  .domanda { font-size: 1.25rem; }
+
+  .indirizzo {
+    display: inline-block;
+    border: 2px solid var(--crema);
+    padding: .6rem .9rem .5rem;
+    margin-top: .5rem;
+    font-size: .95rem;
+    line-height: 1.35;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  /* Tendine (progetti e mesi) */
+  .progetti, .mesi { border-bottom: 2px solid var(--crema); }
+
+  details { border-top: 2px solid var(--crema); }
+
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 3.5rem;
+    padding: .65rem 0 .55rem;
+    cursor: pointer;
+    list-style: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::marker { content: ""; }
+
+  summary h3 {
+    font-size: 1.4rem;
+    line-height: 1.15;
+  }
+
+  /* Segno + / -, disegnato con due barre */
+  summary::after {
+    content: "";
+    flex: none;
+    width: 1.1rem;
+    height: 1.1rem;
+    background:
+      linear-gradient(currentColor, currentColor) center / 100% 2px no-repeat,
+      linear-gradient(currentColor, currentColor) center / 2px 100% no-repeat;
+    transition: transform .2s ease;
+  }
+  details[open] > summary::after {
+    background: linear-gradient(currentColor, currentColor) center / 100% 2px no-repeat;
+    transform: rotate(180deg);
+  }
+  summary:hover h3 { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .15em; }
+
+  .voce { padding: 0 0 1.4rem; }
+  .voce p:last-child { margin-bottom: 0; }
+
+  /* Apertura animata dove il browser lo supporta, altrimenti immediata */
+  @supports (interpolate-size: allow-keywords) {
+    :root { interpolate-size: allow-keywords; }
+    details::details-content {
+      block-size: 0;
+      overflow: hidden;
+      transition: block-size .25s ease, content-visibility .25s allow-discrete;
+    }
+    details[open]::details-content { block-size: auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    summary::after,
+    details::details-content { transition: none; }
+  }
+
+  /* ============ CALENDARIO ============
+     L'elenco porta le informazioni, la griglia le riassume.
+     Due soli segni: eventi pieni (crema), appuntamenti settimanali a contorno. */
+
+  /* Box delle ricorrenze: crema ad angoli vivi, testo blu */
+  .ricorrenze {
+    background: var(--crema);
+    color: var(--blu);
+    padding: 1rem 1.1rem .9rem;
+    margin: 0 0 2rem;
+  }
+  .ricorrenze .etichetta { margin: 0 0 .5rem; }
+  .ricorrenze ul { list-style: none; padding: 0; margin: 0; }
+  .ricorrenze li {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0 1rem;
+    padding: .35rem 0;
+    border-top: 2px solid var(--blu);
+  }
+  .ricorrenze li:first-child { border-top: 0; }
+  .ricorrenze li > :first-child { text-transform: uppercase; letter-spacing: .04em; }
+
+  .legenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .35rem 1.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem;
+    color: var(--crema-2);
+  }
+  .legenda li::before {
+    content: "";
+    display: inline-block;
+    width: .85em;
+    height: .85em;
+    margin-right: .5em;
+    vertical-align: -.05em;
+  }
+  .legenda .evento::before { background: var(--crema); }
+  .legenda .corso::before { box-shadow: inset 0 0 0 2px var(--crema); }
+
+  .mese .voce { padding-top: .1rem; }
+
+  .griglia {
+    width: calc(100% + 6px);
+    margin: 0 -3px;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 3px;
+    text-align: center;
+  }
+  .griglia th {
+    font-weight: 400;
+    font-size: .75rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--crema-2);
+    padding: 0 0 .35rem;
+  }
+  .griglia abbr { text-decoration: none; }
+  .griglia td {
+    height: 2.75rem;
+    padding: 0;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--crema-2);
+    vertical-align: middle;
+  }
+  .griglia td a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 2.75rem;
+    text-decoration: none;
+  }
+  .griglia td a:hover { text-decoration: underline; text-decoration-thickness: 2px; }
+  .griglia td a:focus-visible { outline-color: var(--crema); outline-offset: 2px; }
+
+  .griglia .evento { background: var(--crema); color: var(--blu); }
+  .griglia .corso { box-shadow: inset 0 0 0 2px var(--crema); color: var(--crema); }
+
+  /* Elenco degli eventi: data grande a sinistra, titolo e una riga a destra */
+  .eventi {
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0 0;
+  }
+  .eventi li {
+    display: grid;
+    grid-template-columns: 4.25rem 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding: .7rem 0 .65rem;
+    border-top: 2px solid var(--crema);
+    line-height: 1.4;
+    scroll-margin-top: 1.5rem;
+  }
+  .eventi li:target { background: rgba(245, 235, 210, .12); }
+
+  .eventi .data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .eventi .data .gg {
+    font-size: .75rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+  .eventi .data .n {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 2.6rem;
+    line-height: .9;
+    margin-top: .2rem;
+  }
+  .eventi .titolo { display: block; font-size: 1.15rem; line-height: 1.25; }
+  .eventi .desc { display: block; color: var(--crema-2); font-size: 1rem; margin-top: .15rem; }
+  .ora { white-space: nowrap; }
+
+  .contatti p { line-height: 1.8; }
+
+  /* Footer: doppio filetto, chiude come apre */
+  footer {
+    margin-top: 4rem;
+    padding-top: 3px;
+    border-top: 6px solid var(--crema);
+    font-size: .95rem;
+    line-height: 1.6;
+    color: var(--crema-2);
+  }
+  footer::before {
+    content: "";
+    display: block;
+    border-top: 2px solid var(--crema);
+    margin-bottom: 1.1rem;
+  }
+  footer p { margin: 0 0 .75rem; }
+
+  @media (min-width: 48em) {
+    body { padding: 4.5rem 1.25rem 5rem; font-size: 1.1875rem; }
+    .manifesto { font-size: 1.5rem; }
+    section { margin-top: 4.5rem; }
+    h2 { font-size: 2.75rem; }
+    summary h3 { font-size: 1.6rem; }
+    .griglia td, .griglia td a { height: 3.1rem; min-height: 3.1rem; }
+    .eventi li { grid-template-columns: 5rem 1fr; }
+    .eventi .data .n { font-size: 3rem; }
+  }
+
+  /* Stampa: nero su bianco, senza grana */
+  @media print {
+    html, body { background: #fff; color: #000; }
+    body { padding: 0; }
+    body::before { display: none; }
+    .testata img { filter: invert(1) grayscale(1); width: 14rem; }
+    h2, details, .progetti, .mesi, .indirizzo, .eventi li, footer, footer::before { border-color: #000; }
+    summary::after { display: none; }
+    .griglia td, .griglia th, .legenda, .eventi .desc, footer { color: #000; }
+    .griglia .evento, .ricorrenze, .legenda li::before { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .griglia .evento { background: #000; color: #fff; }
+    .griglia .corso, .legenda .corso::before { box-shadow: inset 0 0 0 2px #000; color: #000; }
+    .legenda .evento::before { background: #000; }
+    .ricorrenze { background: #fff; color: #000; border: 2px solid #000; }
+    .ricorrenze li { border-color: #000; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+<header class="testata">
+<h1><img src="img/lo-sbando-logo.png" width="1716" height="820" alt="Lo Sbando - Centro Situazionale"></h1>
+</header>
+
+<p class="manifesto">Un luogo fisico nel quartiere San Donato, a Torino, dove le persone si incontrano e, per il fatto stesso di incontrarsi, fanno accadere cose.</p>
+
+<section id="cose">
+<h2>Cos'è un Centro Situazionale?</h2>
+<p>Innanzitutto è un luogo fisico, in cui le persone possono andare e nel quale possono incontrarsi. Da qui, “Centro”.</p>
+<p>Poi è un luogo in cui, per il fatto stesso che due o più persone ci si incontrano, accadono cose. Si riattivano energie sociali, si ritrovano partecipazione e senso di appartenenza, si coltiva meraviglia. Il tutto non come consumatori e consumatrici - anzi, proprio in contrasto con una logica di socialità e di cultura come beni di consumo - ma come partecipanti, promotori, collaboratori. Da qui, “Situazionale”.</p>
+<p class="indirizzo">Piazza Innocenzo Vigliardi Paravia 9/B<br>10144 Torino</p>
+</section>
+
+<!--
+  CALENDARIO - come aggiornarlo (istruzioni complete in LEGGIMI.md)
+  1. Nuovo evento: aggiungi una riga <li class="evento" id="ev-AAAA-MM-GG"> nell'elenco del mese
+     e, nella griglia, trasforma la cella del giorno in
+     <td class="evento"><a href="#ev-AAAA-MM-GG">GG<span class="vh"> - titolo</span></a></td>
+  2. Appuntamento settimanale: nella griglia <td class="corso">GG<span class="vh"> - nome</span></td>
+     e aggiorna il box "Ogni settimana".
+  3. Nuovo mese: copia un intero blocco <details class="mese"> e rifai la griglia.
+     Il mese corrente si apre da solo; senza JavaScript resta aperto quello con l'attributo open.
+-->
+<section class="calendario" id="calendario">
+<h2>Calendario</h2>
+
+<div class="ricorrenze">
+<p class="etichetta">Ogni settimana, dal <time datetime="2026-10-05">5 ottobre</time> al <time datetime="2026-11-30">30 novembre</time></p>
+<ul>
+<li class="corso"><span>Lunedì · Yoga</span> <span class="ora"><time datetime="18:00">18:00</time> - <time datetime="21:00">21:00</time></span></li>
+<li class="corso"><span>Martedì · Danze del Sud</span> <span class="ora"><time datetime="20:00">20:00</time> - <time datetime="21:30">21:30</time></span></li>
+</ul>
+</div>
+
+<ul class="legenda etichetta" aria-hidden="true">
+<li class="evento">Evento</li>
+<li class="corso">Appuntamento settimanale</li>
+</ul>
+
+<div class="mesi">
+<details class="mese">
+<summary><h3 id="mese-2026-10">Ottobre 2026</h3></summary>
+<div class="voce">
+<table class="griglia" aria-labelledby="mese-2026-10">
+<thead><tr><th scope="col"><abbr title="lunedì">Lun</abbr></th><th scope="col"><abbr title="martedì">Mar</abbr></th><th scope="col"><abbr title="mercoledì">Mer</abbr></th><th scope="col"><abbr title="giovedì">Gio</abbr></th><th scope="col"><abbr title="venerdì">Ven</abbr></th><th scope="col"><abbr title="sabato">Sab</abbr></th><th scope="col"><abbr title="domenica">Dom</abbr></th></tr></thead>
+<tbody>
+<tr><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><td class="corso">5<span class="vh"> - yoga</span></td><td class="corso">6<span class="vh"> - Danze del Sud</span></td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td></tr>
+<tr><td class="corso">12<span class="vh"> - yoga</span></td><td class="corso">13<span class="vh"> - Danze del Sud</span></td><td>14</td><td class="evento"><a href="#ev-2026-10-15">15<span class="vh"> - admin night</span></a></td><td>16</td><td>17</td><td>18</td></tr>
+<tr><td class="corso">19<span class="vh"> - yoga</span></td><td class="corso">20<span class="vh"> - Danze del Sud</span></td><td>21</td><td>22</td><td>23</td><td>24</td><td class="evento"><a href="#ev-2026-10-25">25<span class="vh"> - Passaggi</span></a></td></tr>
+<tr><td class="corso">26<span class="vh"> - yoga</span></td><td class="corso">27<span class="vh"> - Danze del Sud</span></td><td>28</td><td>29</td><td>30</td><td>31</td><td></td></tr>
+</tbody>
+</table>
+
+<ul class="eventi">
+<li class="evento" id="ev-2026-10-15"><time class="data" datetime="2026-10-15"><span class="gg">Gio</span><span class="n">15</span></time> <span><span class="titolo">Admin night</span><span class="desc"><span class="ora"><time datetime="2026-10-15T19:30">19:30</time> - <time datetime="2026-10-15T21:30">21:30</time></span></span></span></li>
+<li class="evento" id="ev-2026-10-25"><time class="data" datetime="2026-10-25"><span class="gg">Dom</span><span class="n">25</span></time> <span><span class="titolo">Passaggi</span><span class="desc">Workshop di danzaterapia</span></span></li>
+</ul>
+</div>
+</details>
+
+<details class="mese" open>
+<summary><h3 id="mese-2026-11">Novembre 2026</h3></summary>
+<div class="voce">
+<table class="griglia" aria-labelledby="mese-2026-11">
+<thead><tr><th scope="col"><abbr title="lunedì">Lun</abbr></th><th scope="col"><abbr title="martedì">Mar</abbr></th><th scope="col"><abbr title="mercoledì">Mer</abbr></th><th scope="col"><abbr title="giovedì">Gio</abbr></th><th scope="col"><abbr title="venerdì">Ven</abbr></th><th scope="col"><abbr title="sabato">Sab</abbr></th><th scope="col"><abbr title="domenica">Dom</abbr></th></tr></thead>
+<tbody>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+<tr><td class="corso">2<span class="vh"> - yoga</span></td><td class="corso">3<span class="vh"> - Danze del Sud</span></td><td class="evento"><a href="#ev-2026-11-04">4<span class="vh"> - La Notte della Sbatta</span></a></td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+<tr><td class="corso">9<span class="vh"> - yoga</span></td><td class="corso">10<span class="vh"> - Danze del Sud</span></td><td>11</td><td>12</td><td>13</td><td class="evento"><a href="#ev-2026-11-14">14<span class="vh"> - Fusion Nest</span></a></td><td class="evento"><a href="#ev-2026-11-15">15<span class="vh"> - Qualcosa faremo</span></a></td></tr>
+<tr><td class="corso">16<span class="vh"> - yoga</span></td><td class="corso">17<span class="vh"> - Danze del Sud</span></td><td>18</td><td class="evento"><a href="#ev-2026-11-19">19<span class="vh"> - Folk2Folks</span></a></td><td>20</td><td>21</td><td class="evento"><a href="#ev-2026-11-22">22<span class="vh"> - Piante d'Asporto</span></a></td></tr>
+<tr><td class="corso">23<span class="vh"> - yoga</span></td><td class="corso">24<span class="vh"> - Danze del Sud</span></td><td>25</td><td>26</td><td class="evento"><a href="#ev-2026-11-27">27<span class="vh"> - serata trivia</span></a></td><td>28</td><td class="evento"><a href="#ev-2026-11-29">29<span class="vh"> - Passaggi</span></a></td></tr>
+<tr><td class="corso">30<span class="vh"> - yoga</span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+
+<ul class="eventi">
+<li class="evento" id="ev-2026-11-04"><time class="data" datetime="2026-11-04"><span class="gg">Mer</span><span class="n">4</span></time> <span><span class="titolo">La Notte della Sbatta</span><span class="desc">Admin night: porta il portatile e il tuo rospo</span></span></li>
+<li class="evento" id="ev-2026-11-14"><time class="data" datetime="2026-11-14"><span class="gg">Sab</span><span class="n">14</span></time> <span><span class="titolo">Fusion Nest</span><span class="desc">Workshop e social dance di danza fusion</span></span></li>
+<li class="evento" id="ev-2026-11-15"><time class="data" datetime="2026-11-15"><span class="gg">Dom</span><span class="n">15</span></time> <span><span class="titolo">Qualcosa faremo</span><span class="desc">Serata con musica, aperitivo e chiacchiere</span></span></li>
+<li class="evento" id="ev-2026-11-19"><time class="data" datetime="2026-11-19"><span class="gg">Gio</span><span class="n">19</span></time> <span><span class="titolo">Folk2Folks</span><span class="desc">Incontro con Folk sui viaggi di gruppo co-progettati con le comunità che li ospitano</span></span></li>
+<li class="evento" id="ev-2026-11-22"><time class="data" datetime="2026-11-22"><span class="gg">Dom</span><span class="n">22</span></time> <span><span class="titolo">Piante d'Asporto</span><span class="desc">Scambio di piante</span></span></li>
+<li class="evento" id="ev-2026-11-27"><time class="data" datetime="2026-11-27"><span class="gg">Ven</span><span class="n">27</span></time> <span><span class="titolo">Serata trivia</span></span></li>
+<li class="evento" id="ev-2026-11-29"><time class="data" datetime="2026-11-29"><span class="gg">Dom</span><span class="n">29</span></time> <span><span class="titolo">Passaggi</span><span class="desc">Laboratorio di danzaterapia</span></span></li>
+</ul>
+</div>
+</details>
+</div>
+</section>
+
+<section id="progetti">
+<h2>Cosa succede qui</h2>
+
+<div class="progetti">
+<details>
+<summary><h3>Piante d'Asporto</h3></summary>
+<div class="voce">
+<p>L'evento di scambio per chi ha tante piante, forse troppe, sicuramente doppie.</p>
+<p><a href="https://www.piantedasporto.it">www.piantedasporto.it</a> · IG <a href="https://www.instagram.com/piantedasporto/">@piantedasporto</a></p>
+</div>
+</details>
+
+<details>
+<summary><h3>Tutt* Bocciat*</h3></summary>
+<div class="voce">
+<p>L'evento per ignorant* delle bocce che unisce giovani e diversamente giovani.</p>
+<p>IG <a href="https://www.instagram.com/tutt_bocciat_/">@tutt_bocciat_</a></p>
+</div>
+</details>
+
+<details>
+<summary><h3>Prove Aperte</h3></summary>
+<div class="voce">
+<p>Un varietà che non ce l'ha fatta. Spazio aperto a performer che vogliono mettersi alla prova.</p>
+</div>
+</details>
+
+<details>
+<summary><h3>La Notte della Sbatta</h3></summary>
+<div class="voce">
+<p>Insieme contro le forze degli arretrati. E del male. Admin night: porta il portatile e le tue burocrazie da smazzare, esci con una cosa in meno.</p>
+</div>
+</details>
+</div>
+</section>
+
+<section class="contatti" id="contatti">
+<h2>Vieni allo Sbando</h2>
+<p>Indirizzo: <a href="https://share.google/iNlkYcX3iZ38SpJQl">Piazza Innocenzo Vigliardi Paravia 9/B, 10144 Torino</a><br>
+Email: <a href="mailto:associazionelasituazione@proton.me">associazionelasituazione@proton.me</a><br>
+Instagram: <a href="https://www.instagram.com/lo_sbando/">@lo_sbando</a></p>
+<p>Hai un'idea per una serata, un corso, uno scambio? Scrivici: lo spazio è di chi lo fa accadere.</p>
+</section>
+
+<footer>
+<p>Lo Sbando - Centro Situazionale è lo spazio dell'associazione <a href="https://lasituazione.org/">La Situazione</a>.</p>
+<p>La Situazione · Sede: Piazza Innocenzo Vigliardi Paravia 9/B, 10144 Torino · C.F. 97928700018</p>
+</footer>
+
+</main>
+
+<script>
+  /* Apre la tendina del mese corrente, se esiste, e chiude le altre.
+     Senza JavaScript resta aperto il mese con l'attributo open. */
+  (function () {
+    var d = new Date();
+    var id = "mese-" + d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0");
+    var h = document.getElementById(id);
+    if (!h) return;
+    document.querySelectorAll("details.mese").forEach(function (m) {
+      m.open = m.contains(h);
+    });
+  })();
+</script>
+</body>
+</html>
