@@ -1,7 +1,7 @@
 # Sito di Lo Sbando - Centro Situazionale
 
 Sito statico di una pagina, senza dipendenze né build: HTML e CSS in `index.html`, font e immagini in locale.
-Colori, caratteri e logo seguono il manuale di identità di Lo Sbando (blu granuloso, crema, rosso solo nel logo; League Spartan e Bree Serif).
+Colori, caratteri e logo seguono il manuale di identità di Lo Sbando (blu #004aad granuloso, crema, rosso solo nel logo; League Spartan e Bree Serif).
 
 ```
 index.html        pagina unica (testi, calendario, contatti)
