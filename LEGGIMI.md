@@ -8,6 +8,8 @@ index.html        pagina unica (testi, calendario, contatti)
 404.html          pagina di errore
 img/              logo (lo-sbando-logo.png) e anteprima social (og-image.jpg)
 fonts/            League Spartan 800 e Bree Serif, licenza SIL OFL
+scripts/calendario.py              genera il calendario da Google Calendar
+.github/workflows/calendario.yml   lo esegue due volte al giorno su GitHub
 favicon-32.png, apple-touch-icon.png   icone dal bollino
 ```
 
@@ -20,42 +22,28 @@ favicon-32.png, apple-touch-icon.png   icone dal bollino
    - quattro record `A` per `@`: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
    - un record `CNAME` per `www` verso `<tuo-utente-github>.github.io`
 
-Canonical, `sitemap.xml` e `robots.txt` puntano già a `https://losbando.it/`. Quando aggiorni il calendario, cambia `<lastmod>` nella sitemap.
+Canonical, `sitemap.xml` e `robots.txt` puntano già a `https://losbando.it/`. La data `<lastmod>` della sitemap la aggiorna lo script del calendario.
 
 ## Aggiornare il calendario
 
-Il calendario funziona come quello di La Situazione: un elenco per mese (le informazioni) e una griglia (il riassunto). Tutto è in `index.html`, nella sezione `<section class="calendario">`.
+Il calendario del sito si aggiorna **da solo** dal Google Calendar pubblico "Lo Sbando". Non va modificato a mano: tutto ciò che sta tra `<!-- CALENDARIO:INIZIO -->` e `<!-- CALENDARIO:FINE -->` in `index.html` viene riscritto.
 
-### Aggiungere un evento
+Come funziona:
+- GitHub Actions esegue `scripts/calendario.py` due volte al giorno. Se qualcosa è cambiato, fa un commit ("Calendario aggiornato da Google Calendar") e il sito si ripubblica.
+- Per aggiornarlo subito: su GitHub apri **Actions > Aggiorna calendario > Run workflow**.
+- Per provarlo sul computer: `python3 scripts/calendario.py`.
 
-1. Nell'elenco `<ul class="eventi">` del mese, in ordine di data:
+Cosa scrivere su Google Calendar:
+- **Titolo**: breve, è il titolo sul sito.
+- **Descrizione**: una sola riga che dice cosa succede davvero. Compare sotto il titolo, dopo l'orario.
+- **Orario di inizio e fine**: compaiono come `19:30 - 21:00`. Un evento "tutto il giorno" compare senza orario.
+- **Ripetizione settimanale** (corsi): l'evento va nel box "Ogni settimana" e i suoi giorni diventano quadrati a contorno nella griglia. Per chiudere un corso imposta una data di fine alla ripetizione.
+- Gli eventi singoli diventano quadrati pieni nella griglia e righe nell'elenco del mese.
+- Il sito mostra il mese corrente e i successivi che hanno eventi (al massimo 4).
 
-   ```html
-   <li class="evento" id="ev-2026-12-06"><time class="data" datetime="2026-12-06"><span class="gg">Sab</span><span class="n">6</span></time> <span><span class="titolo">Titolo breve</span><span class="desc">Una riga che dice cosa succede davvero</span></span></li>
-   ```
+Attenzione: il calendario è pubblico. Niente invitati, note interne o numeri di telefono negli eventi.
 
-   La descrizione è facoltativa. Un orario si scrive così: `<span class="ora"><time datetime="2026-12-06T19:30">19:30</time> - <time datetime="2026-12-06T22:00">22:00</time></span>`.
-
-2. Nella griglia, sostituisci la cella del giorno:
-
-   ```html
-   <td class="evento"><a href="#ev-2026-12-06">6<span class="vh"> - Titolo breve</span></a></td>
-   ```
-
-   L'`id` della riga e l'`href` della cella devono coincidere.
-
-### Appuntamenti settimanali
-
-- Nella griglia: `<td class="corso">8<span class="vh"> - yoga</span></td>` (quadrato a contorno).
-- Aggiorna il box crema "Ogni settimana" in cima al calendario (periodo, giorni, orari).
-
-### Aggiungere un mese
-
-Copia un intero blocco `<details class="mese"> ... </details>`, cambia l'`id` del titolo (`mese-AAAA-MM`, usato anche da `aria-labelledby` della tabella) e ricostruisci la griglia: una riga `<tr>` per settimana, da lunedì a domenica, celle vuote `<td></td>` prima del giorno 1 e dopo l'ultimo.
-
-Il mese corrente si apre da solo. Sposta comunque l'attributo `open` sul mese corrente: vale per chi ha JavaScript disattivato.
-
-I mesi passati si possono tenere (chiusi) o cancellare.
+Siccome il bot fa commit su `main`, in GitHub Desktop premi sempre **Fetch origin** (e poi **Pull**) prima di modificare il sito.
 
 ## Regole di tono (dal manuale)
 

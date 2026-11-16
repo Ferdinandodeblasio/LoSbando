@@ -426,24 +426,20 @@
 </section>
 
 <!--
-  CALENDARIO - come aggiornarlo (istruzioni complete in LEGGIMI.md)
-  1. Nuovo evento: aggiungi una riga <li class="evento" id="ev-AAAA-MM-GG"> nell'elenco del mese
-     e, nella griglia, trasforma la cella del giorno in
-     <td class="evento"><a href="#ev-AAAA-MM-GG">GG<span class="vh"> - titolo</span></a></td>
-  2. Appuntamento settimanale: nella griglia <td class="corso">GG<span class="vh"> - nome</span></td>
-     e aggiorna il box "Ogni settimana".
-  3. Nuovo mese: copia un intero blocco <details class="mese"> e rifai la griglia.
-     Il mese corrente si apre da solo; senza JavaScript resta aperto quello con l'attributo open.
+  CALENDARIO - si aggiorna da solo dal Google Calendar pubblico "Lo Sbando"
+  (scripts/calendario.py, eseguito ogni giorno da GitHub Actions; istruzioni in LEGGIMI.md).
+  Non modificare a mano il contenuto tra CALENDARIO:INIZIO e CALENDARIO:FINE: verrebbe sovrascritto.
 -->
 <section class="calendario" id="calendario">
 <h2>Calendario situazionale</h2>
 
+<!-- CALENDARIO:INIZIO -->
 <div class="ricorrenze">
 <p class="etichetta">Ogni settimana</p>
 <ul>
-<li class="corso"><span>Lunedì · Tai Ki Kung</span> <span class="ora"><time datetime="10:00">10:00</time> - <time datetime="11:00">11:00</time></span></li>
-<li class="corso"><span>Lunedì · Yoga</span> <span class="ora"><time datetime="19:30">19:30</time> - <time datetime="21:00">21:00</time></span></li>
-<li class="corso"><span>Martedì · Danze del Sud</span> <span class="ora"><time datetime="20:00">20:00</time> - <time datetime="21:30">21:30</time></span></li>
+<li class="corso"><span>Lunedì · Tai Chi</span> <span class="ora"><time datetime="10:00">10:00</time> - <time datetime="11:00">11:00</time></span></li>
+<li class="corso"><span>Lunedì · Yoga</span> <span class="ora"><time datetime="19:30">19:30</time> - <time datetime="21:05">21:05</time></span></li>
+<li class="corso"><span>Martedì · Viandanze - Danze del Sud</span> <span class="ora"><time datetime="20:00">20:00</time> - <time datetime="21:30">21:30</time></span></li>
 </ul>
 </div>
 
@@ -460,29 +456,54 @@
 <thead><tr><th scope="col"><abbr title="lunedì">Lun</abbr></th><th scope="col"><abbr title="martedì">Mar</abbr></th><th scope="col"><abbr title="mercoledì">Mer</abbr></th><th scope="col"><abbr title="giovedì">Gio</abbr></th><th scope="col"><abbr title="venerdì">Ven</abbr></th><th scope="col"><abbr title="sabato">Sab</abbr></th><th scope="col"><abbr title="domenica">Dom</abbr></th></tr></thead>
 <tbody>
 <tr><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
-<tr><td class="corso">2<span class="vh"> - Tai Ki Kung e yoga</span></td><td class="corso">3<span class="vh"> - Danze del Sud</span></td><td class="evento"><a href="#ev-2026-11-04">4<span class="vh"> - La Notte della Sbatta</span></a></td><td>5</td><td>6</td><td>7</td><td class="evento"><a href="#ev-2026-11-08">8<span class="vh"> - Vino e Crochet</span></a></td></tr>
-<tr><td class="corso">9<span class="vh"> - Tai Ki Kung e yoga</span></td><td class="corso">10<span class="vh"> - Danze del Sud</span></td><td>11</td><td>12</td><td>13</td><td class="evento"><a href="#ev-2026-11-14">14<span class="vh"> - Fusion Nest</span></a></td><td class="evento"><a href="#ev-2026-11-15">15<span class="vh"> - Qualcosa faremo</span></a></td></tr>
-<tr><td class="corso">16<span class="vh"> - Tai Ki Kung e yoga</span></td><td class="evento"><a href="#ev-2026-11-17">17<span class="vh"> - La Ghenga dei Libri e Danze del Sud</span></a></td><td>18</td><td class="evento"><a href="#ev-2026-11-19">19<span class="vh"> - Folk2Folks</span></a></td><td>20</td><td>21</td><td class="evento"><a href="#ev-2026-11-22">22<span class="vh"> - Piante d'Asporto</span></a></td></tr>
-<tr><td class="corso">23<span class="vh"> - Tai Ki Kung e yoga</span></td><td class="corso">24<span class="vh"> - Danze del Sud</span></td><td>25</td><td>26</td><td class="evento"><a href="#ev-2026-11-27">27<span class="vh"> - serata trivia e Jam Donato</span></a></td><td>28</td><td class="evento"><a href="#ev-2026-11-29">29<span class="vh"> - Passaggi</span></a></td></tr>
-<tr><td class="corso">30<span class="vh"> - Tai Ki Kung e yoga</span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>2</td><td>3</td><td class="evento"><a href="#ev-2026-11-04">4<span class="vh"> - La Notte della Sbatta</span></a></td><td>5</td><td>6</td><td>7</td><td class="evento"><a href="#ev-2026-11-08">8<span class="vh"> - Vino e Crochet</span></a></td></tr>
+<tr><td class="corso">9<span class="vh"> - Tai Chi, Yoga</span></td><td class="corso">10<span class="vh"> - Viandanze - Danze del Sud</span></td><td>11</td><td>12</td><td>13</td><td class="evento"><a href="#ev-2026-11-14">14<span class="vh"> - Fusion Nest</span></a></td><td class="evento"><a href="#ev-2026-11-15">15<span class="vh"> - Qualcosa Faremo</span></a></td></tr>
+<tr><td class="corso">16<span class="vh"> - Tai Chi, Yoga</span></td><td class="evento"><a href="#ev-2026-11-17">17<span class="vh"> - La Ghenga dei Libri, Viandanze - Danze del Sud</span></a></td><td>18</td><td class="evento"><a href="#ev-2026-11-19">19<span class="vh"> - Folk2Folks</span></a></td><td>20</td><td>21</td><td class="evento"><a href="#ev-2026-11-22">22<span class="vh"> - Piante d&#x27;Asporto</span></a></td></tr>
+<tr><td class="corso">23<span class="vh"> - Tai Chi, Yoga</span></td><td class="corso">24<span class="vh"> - Viandanze - Danze del Sud</span></td><td>25</td><td>26</td><td class="evento"><a href="#ev-2026-11-27">27<span class="vh"> - Jam Donato</span></a></td><td class="evento"><a href="#ev-2026-11-28">28<span class="vh"> - Legàmi</span></a></td><td class="evento"><a href="#ev-2026-11-29">29<span class="vh"> - Passaggi - Danzaterapia</span></a></td></tr>
+<tr><td class="corso">30<span class="vh"> - Tai Chi, Yoga</span></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 </tbody>
 </table>
 
 <ul class="eventi">
-<li class="evento" id="ev-2026-11-04"><time class="data" datetime="2026-11-04"><span class="gg">Mer</span><span class="n">4</span></time> <span><span class="titolo">La Notte della Sbatta</span><span class="desc">Admin night: porta il portatile e il tuo rospo</span></span></li>
-<li class="evento" id="ev-2026-11-08"><time class="data" datetime="2026-11-08"><span class="gg">Dom</span><span class="n">8</span></time> <span><span class="titolo">Vino e Crochet</span><span class="desc">Uncinetto e un bicchiere di vino in compagnia</span></span></li>
-<li class="evento" id="ev-2026-11-14"><time class="data" datetime="2026-11-14"><span class="gg">Sab</span><span class="n">14</span></time> <span><span class="titolo">Fusion Nest</span><span class="desc">Workshop e social dance di danza fusion</span></span></li>
-<li class="evento" id="ev-2026-11-15"><time class="data" datetime="2026-11-15"><span class="gg">Dom</span><span class="n">15</span></time> <span><span class="titolo">Qualcosa faremo</span><span class="desc">Serata con musica, aperitivo e chiacchiere</span></span></li>
-<li class="evento" id="ev-2026-11-17"><time class="data" datetime="2026-11-17"><span class="gg">Mar</span><span class="n">17</span></time> <span><span class="titolo">La Ghenga dei Libri</span><span class="desc">Incontro del book club</span></span></li>
-<li class="evento" id="ev-2026-11-19"><time class="data" datetime="2026-11-19"><span class="gg">Gio</span><span class="n">19</span></time> <span><span class="titolo">Folk2Folks</span><span class="desc">Incontro con Folk sui viaggi di gruppo co-progettati con le comunità che li ospitano</span></span></li>
-<li class="evento" id="ev-2026-11-22"><time class="data" datetime="2026-11-22"><span class="gg">Dom</span><span class="n">22</span></time> <span><span class="titolo">Piante d'Asporto</span><span class="desc">Scambio di piante</span></span></li>
-<li class="evento" id="ev-2026-11-27"><time class="data" datetime="2026-11-27"><span class="gg">Ven</span><span class="n">27</span></time> <span><span class="titolo">Serata trivia</span></span></li>
-<li class="evento" id="ev-2026-11-27-jam"><time class="data" datetime="2026-11-27"><span class="gg">Ven</span><span class="n">27</span></time> <span><span class="titolo">Jam Donato</span><span class="desc">Jam session di quartiere: porta il tuo strumento</span></span></li>
-<li class="evento" id="ev-2026-11-29"><time class="data" datetime="2026-11-29"><span class="gg">Dom</span><span class="n">29</span></time> <span><span class="titolo">Passaggi</span><span class="desc">Laboratorio di danzaterapia</span></span></li>
+<li class="evento" id="ev-2026-11-04"><time class="data" datetime="2026-11-04"><span class="gg">Mer</span><span class="n">4</span></time> <span><span class="titolo">La Notte della Sbatta</span><span class="desc"><span class="ora"><time datetime="2026-11-04T18:30">18:30</time> - <time datetime="2026-11-04T20:30">20:30</time></span> · Admin night: porta il portatile e le burocrazie da smazzare.</span></span></li>
+<li class="evento" id="ev-2026-11-08"><time class="data" datetime="2026-11-08"><span class="gg">Dom</span><span class="n">8</span></time> <span><span class="titolo">Vino e Crochet</span><span class="desc"><span class="ora"><time datetime="2026-11-08T19:00">19:00</time> - <time datetime="2026-11-08T21:00">21:00</time></span></span></span></li>
+<li class="evento" id="ev-2026-11-14"><time class="data" datetime="2026-11-14"><span class="gg">Sab</span><span class="n">14</span></time> <span><span class="titolo">Fusion Nest</span><span class="desc"><span class="ora"><time datetime="2026-11-14T18:00">18:00</time> - <time datetime="2026-11-14T23:05">23:05</time></span> · Workshop e social dance di danza fusion</span></span></li>
+<li class="evento" id="ev-2026-11-15"><time class="data" datetime="2026-11-15"><span class="gg">Dom</span><span class="n">15</span></time> <span><span class="titolo">Qualcosa Faremo</span><span class="desc"><span class="ora"><time datetime="2026-11-15T17:00">17:00</time> - <time datetime="2026-11-15T20:05">20:05</time></span> · Aggregazione, senza pressione. Torniamo a incontrarci perché sì.</span></span></li>
+<li class="evento" id="ev-2026-11-17"><time class="data" datetime="2026-11-17"><span class="gg">Mar</span><span class="n">17</span></time> <span><span class="titolo">La Ghenga dei Libri</span><span class="desc"><span class="ora"><time datetime="2026-11-17T18:30">18:30</time> - <time datetime="2026-11-17T20:00">20:00</time></span> · Book club: porta il libro che stai leggendo, o anche solo la curiosità.</span></span></li>
+<li class="evento" id="ev-2026-11-19"><time class="data" datetime="2026-11-19"><span class="gg">Gio</span><span class="n">19</span></time> <span><span class="titolo">Folk2Folks</span><span class="desc"><span class="ora"><time datetime="2026-11-19T19:30">19:30</time> - <time datetime="2026-11-19T22:00">22:00</time></span> · Incontro con Folk sui viaggi di gruppo co-progettati con le comunità che li ospitano</span></span></li>
+<li class="evento" id="ev-2026-11-22"><time class="data" datetime="2026-11-22"><span class="gg">Dom</span><span class="n">22</span></time> <span><span class="titolo">Piante d&#x27;Asporto</span><span class="desc"><span class="ora"><time datetime="2026-11-22T15:00">15:00</time> - <time datetime="2026-11-22T19:05">19:05</time></span> · Scambio di piante: porta le tue doppie, torna a casa con qualcosa di nuovo</span></span></li>
+<li class="evento" id="ev-2026-11-27"><time class="data" datetime="2026-11-27"><span class="gg">Ven</span><span class="n">27</span></time> <span><span class="titolo">Jam Donato</span><span class="desc"><span class="ora"><time datetime="2026-11-27T18:00">18:00</time> - <time datetime="2026-11-27T21:00">21:00</time></span> · Jam session di quartiere: porta il tuo strumento o anche solo la voglia di battere le mani (possibilmente a tempo)</span></span></li>
+<li class="evento" id="ev-2026-11-28"><time class="data" datetime="2026-11-28"><span class="gg">Sab</span><span class="n">28</span></time> <span><span class="titolo">Legàmi</span><span class="desc"><span class="ora"><time datetime="2026-11-28T16:30">16:30</time> - <time datetime="2026-11-28T19:00">19:00</time></span></span></span></li>
+<li class="evento" id="ev-2026-11-29"><time class="data" datetime="2026-11-29"><span class="gg">Dom</span><span class="n">29</span></time> <span><span class="titolo">Passaggi - Danzaterapia</span><span class="desc"><span class="ora"><time datetime="2026-11-29T16:00">16:00</time> - <time datetime="2026-11-29T20:05">20:05</time></span> · Laboratorio di danzaterapia con Aurora Lo Bue ed Eleonora Olimpieri</span></span></li>
+</ul>
+</div>
+</details>
+
+<details class="mese">
+<summary><h3 id="mese-2026-12">Dicembre 2026</h3></summary>
+<div class="voce">
+<table class="griglia" aria-labelledby="mese-2026-12">
+<thead><tr><th scope="col"><abbr title="lunedì">Lun</abbr></th><th scope="col"><abbr title="martedì">Mar</abbr></th><th scope="col"><abbr title="mercoledì">Mer</abbr></th><th scope="col"><abbr title="giovedì">Gio</abbr></th><th scope="col"><abbr title="venerdì">Ven</abbr></th><th scope="col"><abbr title="sabato">Sab</abbr></th><th scope="col"><abbr title="domenica">Dom</abbr></th></tr></thead>
+<tbody>
+<tr><td></td><td class="corso">1<span class="vh"> - Viandanze - Danze del Sud</span></td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+<tr><td class="corso">7<span class="vh"> - Tai Chi, Yoga</span></td><td class="corso">8<span class="vh"> - Viandanze - Danze del Sud</span></td><td class="evento"><a href="#ev-2026-12-09">9<span class="vh"> - Notte della Sbatta 03</span></a></td><td>10</td><td>11</td><td class="evento"><a href="#ev-2026-12-12">12<span class="vh"> - Qualcosa Faremo</span></a></td><td>13</td></tr>
+<tr><td class="corso">14<span class="vh"> - Tai Chi, Yoga</span></td><td class="corso">15<span class="vh"> - Viandanze - Danze del Sud</span></td><td>16</td><td>17</td><td>18</td><td>19</td><td class="evento"><a href="#ev-2026-12-20">20<span class="vh"> - Piante d&#x27;Asporto - Tombola delle piante</span></a></td></tr>
+<tr><td class="corso">21<span class="vh"> - Tai Chi, Yoga</span></td><td class="evento"><a href="#ev-2026-12-22">22<span class="vh"> - Festa Viandanze con concerto, Viandanze - Danze del Sud</span></a></td><td class="evento"><a href="#ev-2026-12-23">23<span class="vh"> - Le Stagioni in Città - Davide Simonetti</span></a></td><td>24</td><td>25</td><td>26</td><td>27</td></tr>
+<tr><td class="corso">28<span class="vh"> - Tai Chi, Yoga</span></td><td class="corso">29<span class="vh"> - Viandanze - Danze del Sud</span></td><td>30</td><td>31</td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+
+<ul class="eventi">
+<li class="evento" id="ev-2026-12-09"><time class="data" datetime="2026-12-09"><span class="gg">Mer</span><span class="n">9</span></time> <span><span class="titolo">Notte della Sbatta 03</span><span class="desc"><span class="ora"><time datetime="2026-12-09T18:30">18:30</time> - <time datetime="2026-12-09T21:00">21:00</time></span> · Admin night: porta il portatile e le burocrazie da smazzare.</span></span></li>
+<li class="evento" id="ev-2026-12-12"><time class="data" datetime="2026-12-12"><span class="gg">Sab</span><span class="n">12</span></time> <span><span class="titolo">Qualcosa Faremo</span><span class="desc"><span class="ora"><time datetime="2026-12-12T17:00">17:00</time> - <time datetime="2026-12-12T20:05">20:05</time></span> · Aggregazione, senza pressione. Torniamo a incontrarci perché sì.</span></span></li>
+<li class="evento" id="ev-2026-12-20"><time class="data" datetime="2026-12-20"><span class="gg">Dom</span><span class="n">20</span></time> <span><span class="titolo">Piante d&#x27;Asporto - Tombola delle piante</span><span class="desc"><span class="ora"><time datetime="2026-12-20T18:00">18:00</time> - <time datetime="2026-12-20T21:05">21:05</time></span></span></span></li>
+<li class="evento" id="ev-2026-12-22"><time class="data" datetime="2026-12-22"><span class="gg">Mar</span><span class="n">22</span></time> <span><span class="titolo">Festa Viandanze con concerto</span><span class="desc"><span class="ora"><time datetime="2026-12-22T21:30">21:30</time> - <time datetime="2026-12-22T23:05">23:05</time></span> · Aperto a tutt*. Festa di fine anno del corso di Danze del Sud, con musica dal vivo. Vieni a ballare!</span></span></li>
+<li class="evento" id="ev-2026-12-23"><time class="data" datetime="2026-12-23"><span class="gg">Mer</span><span class="n">23</span></time> <span><span class="titolo">Le Stagioni in Città - Davide Simonetti</span><span class="desc"><span class="ora"><time datetime="2026-12-23T19:30">19:30</time> - <time datetime="2026-12-23T21:30">21:30</time></span> · Spettacolo teatrale di e con Davide Simonetti, basato sui racconti di Italo Calvino</span></span></li>
 </ul>
 </div>
 </details>
 </div>
+<!-- CALENDARIO:FINE -->
 </section>
 
 <section id="progetti">
