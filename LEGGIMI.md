@@ -10,7 +10,7 @@ img/              logo (lo-sbando-logo.png) e anteprima social (og-image.jpg)
 fonts/            League Spartan 800 e Bree Serif, licenza SIL OFL
 scripts/calendario.py              genera il calendario da Google Calendar
 .github/workflows/calendario.yml   lo esegue due volte al giorno su GitHub
-favicon-32.png, apple-touch-icon.png   icone dal bollino
+favicon.ico, favicon-192.png, apple-touch-icon.png   icone (la S)
 ```
 
 ## Pubblicare con GitHub Pages
