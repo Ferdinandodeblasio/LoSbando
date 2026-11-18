@@ -9,7 +9,7 @@ index.html        pagina unica (testi, calendario, contatti)
 img/              logo (lo-sbando-logo.png) e anteprima social (og-image.jpg)
 fonts/            League Spartan 800 e Bree Serif, licenza SIL OFL
 scripts/calendario.py              genera il calendario da Google Calendar
-.github/workflows/calendario.yml   lo esegue due volte al giorno su GitHub
+.github/workflows/calendario.yml   lo esegue ogni ora su GitHub
 favicon.ico, favicon-192.png, apple-touch-icon.png   icone (la S)
 ```
 
@@ -29,7 +29,7 @@ Canonical, `sitemap.xml` e `robots.txt` puntano già a `https://losbando.it/`. L
 Il calendario del sito si aggiorna **da solo** dal Google Calendar pubblico "Lo Sbando". Non va modificato a mano: tutto ciò che sta tra `<!-- CALENDARIO:INIZIO -->` e `<!-- CALENDARIO:FINE -->` in `index.html` viene riscritto.
 
 Come funziona:
-- GitHub Actions esegue `scripts/calendario.py` due volte al giorno. Se qualcosa è cambiato, fa un commit ("Calendario aggiornato da Google Calendar") e il sito si ripubblica.
+- GitHub Actions esegue `scripts/calendario.py` ogni ora (GitHub a volte parte con qualche ora di ritardo). Se qualcosa è cambiato, fa un commit ("Calendario aggiornato da Google Calendar") e il sito si ripubblica.
 - Per aggiornarlo subito: su GitHub apri **Actions > Aggiorna calendario > Run workflow**.
 - Per provarlo sul computer: `python3 scripts/calendario.py`.
 
