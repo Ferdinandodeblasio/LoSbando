@@ -102,6 +102,17 @@ def date_escluse(campi):
 
 # ---------- modello ----------
 
+def privato(campi):
+    """Eventi da non mostrare: [PRIVATO] nel titolo, oppure visibilità "privata" in Google Calendar
+    (nel feed pubblico arrivano come CLASS:PRIVATE o con il solo titolo "Busy"/"Occupato")."""
+    titolo = testo_ics(campi["SUMMARY"][0][1])
+    if "[PRIVATO]" in titolo.upper():
+        return True
+    if "CLASS" in campi and campi["CLASS"][0][1].upper() in ("PRIVATE", "CONFIDENTIAL"):
+        return True
+    return titolo.lower() in ("busy", "occupato", "occupata")
+
+
 def prepara(eventi_ics):
     singoli, settimanali = [], []
     cancellati = {}  # uid -> date annullate di una serie
@@ -112,6 +123,8 @@ def prepara(eventi_ics):
         if "DTSTART" not in c or "SUMMARY" not in c:
             continue
         if "STATUS" in c and c["STATUS"][0][1] == "CANCELLED":
+            continue
+        if privato(c):
             continue
         if "RECURRENCE-ID" in c:
             continue  # modifica di una singola ripetizione: la serie basta
@@ -137,6 +150,7 @@ def prepara(eventi_ics):
             settimanali.append(ev)
         else:
             singoli.append(ev)
+    settimanali.sort(key=lambda s: (s["inizio"] or time(0), s["titolo"]))  # ordine stabile
     return singoli, settimanali
 
 

@@ -41,7 +41,9 @@ Cosa scrivere su Google Calendar:
 - Gli eventi singoli diventano quadrati pieni nella griglia e righe nell'elenco del mese.
 - Il sito mostra il mese corrente e i successivi che hanno eventi (al massimo 4).
 
-Attenzione: il calendario è pubblico. Niente invitati, note interne o numeri di telefono negli eventi.
+- **Eventi da non mostrare sul sito**: scrivi `[PRIVATO]` nel titolo (maiuscole o minuscole, va bene ovunque nel titolo), oppure imposta la visibilità dell'evento su "Privato" in Google Calendar. Lo script li scarta.
+
+Attenzione: il calendario è pubblico. `[PRIVATO]` nasconde l'evento solo dal sito: titolo e orari restano leggibili da chiunque abbia il link del calendario. Per tenerlo davvero riservato usa la visibilità "Privato" o un altro calendario. Niente invitati, note interne o numeri di telefono negli eventi.
 
 Siccome il bot fa commit su `main`, in GitHub Desktop premi sempre **Fetch origin** (e poi **Pull**) prima di modificare il sito.
 
